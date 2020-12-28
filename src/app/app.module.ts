@@ -18,6 +18,8 @@ import { UserContentComponent } from './user-content/user-content.component';
 import { MoviesOverviewComponent } from './movies-overview/movies-overview.component';
 import { AdminContentComponent } from './admin-content/admin-content.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatListModule} from "@angular/material/list";
+import {MatRadioModule} from "@angular/material/radio";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatInputModule,
     ReactiveFormsModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatListModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
