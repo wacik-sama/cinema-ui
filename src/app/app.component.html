@@ -47,19 +47,26 @@
 
     </mat-tab>
 
-    <mat-tab label="MOVIES">
+    <mat-tab label="Movies">
+      <app-movies-overview>
+
+      </app-movies-overview>
+    </mat-tab>
+
+    <div *ngIf="loggedIn">
+    <mat-tab label="My account">
       <app-user-content>
 
       </app-user-content>
     </mat-tab>
-
-    <div *ngIf="loggedIn">
-    <mat-tab label="MY ACCOUNT">
-    </mat-tab>
     </div>
 
     <div *ngIf="admin">
-    <mat-tab label="ADMINISTRATION">ADMIN CONTENT</mat-tab>
+    <mat-tab label="Administration">
+      <app-admin-content>
+
+      </app-admin-content>
+    </mat-tab>
     </div>
   </mat-tab-group>
 

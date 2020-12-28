@@ -15,13 +15,18 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatTabsModule} from "@angular/material/tabs";
 import { UserContentComponent } from './user-content/user-content.component';
+import { MoviesOverviewComponent } from './movies-overview/movies-overview.component';
+import { AdminContentComponent } from './admin-content/admin-content.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    UserContentComponent
+    UserContentComponent,
+    MoviesOverviewComponent,
+    AdminContentComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,8 @@ import { UserContentComponent } from './user-content/user-content.component';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
