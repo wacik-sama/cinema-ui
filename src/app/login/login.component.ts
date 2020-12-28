@@ -3,6 +3,8 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {FormsModule, FormControl, FormGroup} from '@angular/forms';
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,6 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
+    console.log("CHUJ", this.username.value, this.password.value)
+      if (this.username.value === 'wacik' && this.password.value === '123') {
+        this.dialogRef.close('user');
+      }
+    if (this.username.value === 'wacik' && this.password.value === 'sama') {
+      this.dialogRef.close('admin');
+    }
   }
 }

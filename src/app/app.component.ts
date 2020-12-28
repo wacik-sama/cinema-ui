@@ -36,6 +36,8 @@ export class AppComponent implements AfterViewInit{
   displayedColumns: string[] = [ 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   title = 'cinema-ui';
+  loggedIn = false;
+  admin = false;
 
   constructor(public dialog: MatDialog) {}
 
@@ -45,6 +47,14 @@ export class AppComponent implements AfterViewInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === 'admin') {
+        this.loggedIn = true;
+        this.admin = true;
+      }
+      if (result === 'user') {
+        this.loggedIn = true;
+      }
+
       console.log('The dialog was closed');
     });
   }
@@ -65,5 +75,10 @@ export class AppComponent implements AfterViewInit{
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  logout() {
+    this.loggedIn = false;
+    this.admin = false;
   }
 }
