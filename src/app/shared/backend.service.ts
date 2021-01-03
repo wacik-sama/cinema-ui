@@ -11,7 +11,8 @@ export class BackendService {
 
   getHeaders() {
     return new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     });
   }
 

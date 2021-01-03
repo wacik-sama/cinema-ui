@@ -21,6 +21,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatRadioModule} from "@angular/material/radio";
 import { AddMovieComponent } from './add-movie/add-movie.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AddMovieComponent } from './add-movie/add-movie.component';
     MatTabsModule,
     MatExpansionModule,
     MatListModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
