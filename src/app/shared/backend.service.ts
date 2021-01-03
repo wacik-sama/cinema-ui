@@ -7,12 +7,11 @@ import {Observable} from "rxjs";
 })
 export class BackendService {
 
-  restUrl = 'localhost:8080';
+  restUrl = 'api';
 
   getHeaders() {
     return new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*'
+      'Content-Type': 'application/json'
     });
   }
 

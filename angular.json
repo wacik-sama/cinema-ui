@@ -67,7 +67,8 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "cinema-ui:build:production"
+              "browserTarget": "cinema-ui:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             }
           }
         },
