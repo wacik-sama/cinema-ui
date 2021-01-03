@@ -20,6 +20,7 @@ import { AdminContentComponent } from './admin-content/admin-content.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatListModule} from "@angular/material/list";
 import {MatRadioModule} from "@angular/material/radio";
+import { AddMovieComponent } from './add-movie/add-movie.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatRadioModule} from "@angular/material/radio";
     RegisterComponent,
     UserContentComponent,
     MoviesOverviewComponent,
-    AdminContentComponent
+    AdminContentComponent,
+    AddMovieComponent
   ],
   imports: [
     BrowserModule,
