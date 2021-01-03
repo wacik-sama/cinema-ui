@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
 
 export interface PeriodicElement {
   name: string;
@@ -28,14 +29,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './movies-overview.component.html',
   styleUrls: ['./movies-overview.component.css']
 })
-export class MoviesOverviewComponent implements OnInit {
+export class MoviesOverviewComponent implements OnInit, AfterViewInit {
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = [ 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
   }
 
 }

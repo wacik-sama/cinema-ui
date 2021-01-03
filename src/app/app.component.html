@@ -3,7 +3,7 @@
   <div style="padding-bottom: 20px">
   <mat-icon style="font-size: 30px;color: #FFED0C;margin-left: 20px;    padding-right: 10px;position: relative;  top: 5px;">videocam</mat-icon>
   <h1 style="color: #FFED0C;display: inline;">FILMSEEKER</h1>
-  <input style="background: white; position: relative; bottom: 4px;margin-left: 50px;font-size:16px;width: 300px;height: 30px" placeholder="Szukaj filmow">
+  <input matInput style="background: white; position: relative; bottom: 4px;margin-left: 50px;font-size:16px;width: 300px;height: 30px" placeholder="Szukaj filmow">
   <mat-icon style="color:white;font-size:35px;margin-left: 30px;position: relative;top: 10px;margin-right: 15px">login</mat-icon>
   <button  style="position: relative;bottom: 4px;" (click)="login()" mat-raised-button>Zaloguj sie</button>
 
@@ -12,9 +12,11 @@
    </div>
 
   <mat-tab-group style="display: block;background: white">
-    <mat-tab label="Overview">
+    <mat-tab label="Overview" matSort>
       <div style="padding-top: 30px;padding-bottom: 50px;background: black " class="mat-elevation-z8" >
-        <h1 style="color: white">TRENDING MOVIES</h1>
+        <div class="filter-content">
+        <h1 style="color: white; display: inline">TRENDING MOVIES</h1> <input matInput style="background: white; position: relative; bottom: 4px;margin-left: 50px;font-size:16px;width: 200px;height: 25px" placeholder="" (keyup)="doFilter($event.target.value)">
+      </div>
         <table style="text-align:left;width: 50%;margin: auto"mat-table [dataSource]="dataSource">
 
           <ng-container matColumnDef="name">
@@ -38,7 +40,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
 
-        <mat-paginator style="width: 50%; margin: auto" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        <mat-paginator style="width: 50%; margin: auto"  [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
       </div>
 
 

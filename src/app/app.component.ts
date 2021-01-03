@@ -2,8 +2,8 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
-import {LoginComponent} from "./login/login.component";
-import {RegisterComponent} from "./register/register.component";
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 
 export interface PeriodicElement {
   name: string;
@@ -81,4 +81,12 @@ export class AppComponent implements AfterViewInit{
     this.loggedIn = false;
     this.admin = false;
   }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  // doFilter(value: any) {
+  //   this.dataSource.filter.trim().toLocaleLowerCase()
+  // }
 }
