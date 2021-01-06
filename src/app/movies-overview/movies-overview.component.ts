@@ -36,10 +36,11 @@ export class MoviesOverviewComponent implements OnInit, AfterViewInit {
 
   favButton = false;
   movies: any = [];
+  dataSource: any = []
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = [ 'title', 'premiere', 'director', 'genre', 'minAge'];
-   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+   //dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
   constructor(private backendService: BackendService) {
 
@@ -47,6 +48,7 @@ export class MoviesOverviewComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.backendService.getMovies().subscribe(res => {
+      this.dataSource = res;
       console.log(res);
     })
   }
