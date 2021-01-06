@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from "rxjs";
 
@@ -9,6 +9,7 @@ export class BackendService {
 
   restUrl = 'http://localhost:8080';
   userConfig: any;
+  dataOnBackendHasChanged: EventEmitter<any> = new EventEmitter();
 
   getHeaders() {
     return new HttpHeaders({

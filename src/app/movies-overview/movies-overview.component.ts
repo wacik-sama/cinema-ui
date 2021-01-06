@@ -53,7 +53,11 @@ export class MoviesOverviewComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  addToFav() {
+  addToFav(element: any) {
+    this.backendService.addMovieToFavList(this.backendService.userConfig.login, element.id).subscribe(res => {
+      this.backendService.dataOnBackendHasChanged.emit(element);
+      console.log(res);
+    })
 
   }
 }

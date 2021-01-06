@@ -72,8 +72,9 @@
     </div>
   </mat-tab-group>
 
+  <div *ngIf="loggedIn">
   <button  style="position: relative;bottom: 4px;margin-right: 470px;float: right;margin-top: 20px" (click)="logout()" mat-raised-button>Wyloguj sie</button>
-
+  </div>
 
 </div>
 </div>

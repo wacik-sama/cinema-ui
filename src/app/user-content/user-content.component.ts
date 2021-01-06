@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, Input, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from "@angular/material/table";
-import {MatPaginator} from "@angular/material/paginator";
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {BackendService} from '../shared/backend.service';
 
 export interface PeriodicElement {
   name: string;
@@ -28,14 +29,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./user-content.component.css']
 })
 export class UserContentComponent implements OnInit, AfterViewInit {
-
+  dataSource: any = [];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  displayedColumns: string[] = [ 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  displayedColumns: string[] = [ 'title', 'premiere', 'director', 'genre', 'minAge'];
+  // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
-  constructor() { }
+  constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
+    this.dataSource = this.backendService.userConfig.movies;
+    this.backendService.dataOnBackendHasChanged.subscribe(res => {
+      this.dataSource.push(res);
+    })
+
   }
 
   ngAfterViewInit(): void {
