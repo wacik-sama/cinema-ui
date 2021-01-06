@@ -22,6 +22,8 @@ import {MatListModule} from "@angular/material/list";
 import {MatRadioModule} from "@angular/material/radio";
 import { AddMovieComponent } from './add-movie/add-movie.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MAT_DATE_LOCALE, MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatExpansionModule,
     MatListModule,
     MatRadioModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

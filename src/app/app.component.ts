@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {MoviesOverviewComponent} from "./movies-overview/movies-overview.component";
 
 export interface PeriodicElement {
   name: string;
@@ -33,11 +34,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class AppComponent implements AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MoviesOverviewComponent) moviesOverview;
+
   displayedColumns: string[] = [ 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   title = 'cinema-ui';
   loggedIn = false;
   admin = false;
+  regularUser = false;
 
   constructor(public dialog: MatDialog) {}
 
@@ -52,6 +56,7 @@ export class AppComponent implements AfterViewInit{
         this.admin = true;
       }
       if (result === 'user') {
+        this.moviesOverview.favButton = true;
         this.loggedIn = true;
       }
 

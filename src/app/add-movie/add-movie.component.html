@@ -5,9 +5,16 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-label>Premiere</mat-label>
+    <mat-label>Premiere (yyyy-MM-dd format)</mat-label>
     <input matInput formControlName="premiere">
   </mat-form-field>
+
+<!--  <mat-form-field appearance="fill" class="example-full-width" style="width: 180px;">-->
+<!--    <mat-label>Premiere</mat-label>-->
+<!--    <input matInput [matDatepicker]="picker" formControlName="premiere">-->
+<!--    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--    <mat-datepicker #picker></mat-datepicker>-->
+<!--  </mat-form-field>-->
 
   <mat-form-field class="example-full-width">
     <mat-label>Director</mat-label>
@@ -17,6 +24,16 @@
   <mat-form-field class="example-full-width">
     <mat-label>Minimum Age</mat-label>
     <input matInput formControlName="minAge">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <select matNativeControl required>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
   </mat-form-field>
 
   <button mat-button (click)="add()">Add movie</button>
