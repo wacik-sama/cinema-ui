@@ -36,7 +36,7 @@ export class MoviesOverviewComponent implements OnInit, AfterViewInit {
 
   favButton = false;
   movies: any = [];
-  dataSource: any = []
+  dataSource: any = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = [ 'title', 'premiere', 'director', 'genre', 'minAge'];
