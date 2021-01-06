@@ -13,8 +13,15 @@
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
+    <mat-label>Age</mat-label>
+    <input matInput formControlName="age">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
     <mat-label>Password</mat-label>
     <input matInput formControlName="password" type="password">
   </mat-form-field>
+
+
   <button mat-button (click)="signIn()">SIGN IN</button>
 </form>
