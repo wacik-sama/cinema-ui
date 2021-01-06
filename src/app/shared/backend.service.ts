@@ -35,7 +35,7 @@ export class BackendService {
   }
 
   login(login: string, password: string): Observable<any> {
-    const url = this.restUrl + '/login';
+    const url = this.restUrl + '/user/login';
     const options = {
       headers: this.getHeaders()
     };
