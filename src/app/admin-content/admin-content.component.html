@@ -1,3 +1,4 @@
+<form [formGroup]="form">
 <div style="background: black">
 <mat-accordion>
   <mat-expansion-panel hideToggle>
@@ -10,35 +11,45 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
 
-    <mat-list>
-      <mat-list-item>USER 1
+    <mat-list *ngFor="let user of users">
+            <mat-list-item>USER 1
+              <mat-radio-group aria-label="Select an option" style="margin-left: 575px;" formControlName="permission">
+                <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>
+                <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>
+                <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>
+                <button mat-button (click)="savePermission()">Save permission</button>
+              </mat-radio-group>
 
-        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">
-          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>
-          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>
-          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>
-        </mat-radio-group>
+            </mat-list-item>
 
-      </mat-list-item>
+<!--      <mat-list-item>USER 1-->
 
-      <mat-divider>
+<!--        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">-->
+<!--          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>-->
+<!--          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>-->
+<!--          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>-->
+<!--        </mat-radio-group>-->
 
-      </mat-divider>
-      <mat-list-item>USER 2
-        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">
-          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>
-          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>
-          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>
-        </mat-radio-group></mat-list-item>
-      <mat-divider>
+<!--      </mat-list-item>-->
 
-      </mat-divider>
-      <mat-list-item>USER 3
-        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">
-          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>
-          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>
-          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>
-        </mat-radio-group></mat-list-item>
+<!--      <mat-divider>-->
+
+<!--      </mat-divider>-->
+<!--      <mat-list-item>USER 2-->
+<!--        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">-->
+<!--          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>-->
+<!--          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>-->
+<!--          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>-->
+<!--        </mat-radio-group></mat-list-item>-->
+<!--      <mat-divider>-->
+
+<!--      </mat-divider>-->
+<!--      <mat-list-item>USER 3-->
+<!--        <mat-radio-group aria-label="Select an option" style="    margin-left: 575px;">-->
+<!--          <mat-radio-button value="1" style="margin-left: 15px">Admin</mat-radio-button>-->
+<!--          <mat-radio-button value="2" style="margin-left: 15px">Regular user</mat-radio-button>-->
+<!--          <mat-radio-button value="3" style="margin-left: 15px">Blocked user</mat-radio-button>-->
+<!--        </mat-radio-group></mat-list-item>-->
     </mat-list>
 
   </mat-expansion-panel>
@@ -63,3 +74,4 @@
 
 
 </div>
+</form>

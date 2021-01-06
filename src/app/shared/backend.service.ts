@@ -79,4 +79,12 @@ export class BackendService {
     return this.http.get(url, options);
   }
 
+  getAllUsers() {
+    const url = this.restUrl + '/user/get';
+    const options = {
+      headers: this.getHeaders()
+    };
+    return this.http.post(url, JSON.stringify({}), options);
+  }
+
 }

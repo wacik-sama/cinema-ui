@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {AddMovieComponent} from '../add-movie/add-movie.component';
 import {MatDialog} from '@angular/material/dialog';
+import {BackendService} from '../shared/backend.service';
 
 @Component({
   selector: 'app-admin-content',
@@ -11,10 +12,23 @@ import {MatDialog} from '@angular/material/dialog';
 export class AdminContentComponent implements OnInit {
 
   form: FormGroup;
+  permission: FormControl;
+  users: any;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private backendService: BackendService,
+              public dialog: MatDialog) {
+    this.permission = new FormControl();
+    this.form = new FormGroup({
+      permission: this.permission
+    }
+    );
+  }
 
   ngOnInit(): void {
+    this.backendService.getAllUsers().subscribe(res => {
+      this.users = res;
+    });
+
   }
 
   addNewMovie() {
@@ -25,6 +39,11 @@ export class AdminContentComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+
+  }
+
+  savePermission() {
+
 
   }
 }

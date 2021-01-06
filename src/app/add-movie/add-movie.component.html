@@ -28,11 +28,8 @@
 
   <mat-form-field>
     <mat-label>Genre</mat-label>
-    <select matNativeControl required>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="mercedes">Mercedes</option>
-      <option value="audi">Audi</option>
+    <select matNativeControl required *ngFor="let genre of genres" formControlName="genre">
+      <option value="{{genre.id}}">{{genre.name}}</option>
     </select>
   </mat-form-field>
 
