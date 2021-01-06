@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
+import {BackendService} from "../shared/backend.service";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-register',
@@ -8,10 +10,23 @@ import {FormGroup} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
+  username: FormControl;
+  password: FormControl;
+  name: FormControl;
+  surname: FormControl;
 
-  constructor() {
+  constructor(public dialogRef: MatDialogRef<RegisterComponent>,
+              private backendService: BackendService) {
+    this.username = new FormControl();
+    this.password = new FormControl();
+    this.name = new FormControl();
+    this.surname = new FormControl();
     this.form = new FormGroup(
       {
+        username: this.username,
+        password: this.password,
+        name: this.name,
+        surname: this.surname
       }
     );
   }
@@ -20,6 +35,9 @@ export class RegisterComponent implements OnInit {
   }
 
   signIn() {
-
+    this.backendService.register(this.username.value, this.password.value, this.name.value, this.surname.value).subscribe(res => {
+      console.log(res);
+    });
+    this.dialogRef.close();
   }
 }

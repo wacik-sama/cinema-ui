@@ -42,12 +42,15 @@ export class BackendService {
     return this.http.post(url, JSON.stringify({login, password}), options);
   }
 
-  register(): Observable<any> {
+  register(login: string, password: string, name: string, surname: string): Observable<any> {
+    // tslint:disable-next-line:variable-name
+    const role_ids: any = [];
+    role_ids.push(1);
     const url = this.restUrl + '/user/add';
     const options = {
       headers: this.getHeaders()
     };
-    return this.http.post(url, options);
+    return this.http.post(url, JSON.stringify({login, password, name, surname, role_ids}), options);
   }
 
   addMovieToFavList(login: string, movieId: string): Observable<any> {
