@@ -8,6 +8,7 @@ import {Observable} from "rxjs";
 export class BackendService {
 
   restUrl = 'http://localhost:8080';
+  userConfig: any;
 
   getHeaders() {
     return new HttpHeaders({
@@ -33,12 +34,12 @@ export class BackendService {
     return this.http.post(url, options);
   }
 
-  login(): Observable<any> {
+  login(login: string, password: string): Observable<any> {
     const url = this.restUrl + '/login';
     const options = {
       headers: this.getHeaders()
     };
-    return this.http.post(url, options);
+    return this.http.post(url, JSON.stringify({login, password}), options);
   }
 
   register(): Observable<any> {
@@ -64,6 +65,14 @@ export class BackendService {
       headers: this.getHeaders()
     };
     return this.http.post(url, JSON.stringify({}), options);
+  }
+
+  getUserConfigByName(login: string) {
+    const url = this.restUrl + '/user/get/' + login;
+    const options = {
+      headers: this.getHeaders()
+    };
+    return this.http.get(url, options);
   }
 
 }

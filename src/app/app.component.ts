@@ -51,13 +51,17 @@ export class AppComponent implements AfterViewInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result === 'admin') {
+      if (result === 2) {
         this.loggedIn = true;
         this.admin = true;
       }
-      if (result === 'user') {
+      if (result === 1) {
         this.moviesOverview.favButton = true;
         this.loggedIn = true;
+      }
+
+      if (result === 3) {
+        this.loggedIn = false;
       }
 
       console.log('The dialog was closed');

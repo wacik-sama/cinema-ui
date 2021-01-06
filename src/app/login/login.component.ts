@@ -1,6 +1,7 @@
 import {Component, NgModule, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormsModule, FormControl, FormGroup} from '@angular/forms';
+import {BackendService} from "../shared/backend.service";
 
 
 
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   password: FormControl;
   form: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<LoginComponent>) {
+  constructor(public dialogRef: MatDialogRef<LoginComponent>,
+              private backendService: BackendService) {
     this.username = new FormControl();
     this.password = new FormControl();
 
@@ -32,12 +34,25 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("CHUJ", this.username.value, this.password.value)
-      if (this.username.value === 'wacik' && this.password.value === '123') {
-        this.dialogRef.close('user');
+    this.backendService.login(this.username.value, this.password.value).subscribe( res => {
+      if (res === true) {
+        this.backendService.getUserConfigByName(this.username.value).subscribe(res => {
+          this.backendService.userConfig = res;
+          this.dialogRef.close(this.backendService.userConfig.roles.id);
+        });
       }
-    if (this.username.value === 'wacik' && this.password.value === 'sama') {
-      this.dialogRef.close('admin');
-    }
+      }, error => {
+      this.dialogRef.close(3);
+      }
+    );
+
+
+
+    //   if (this.username.value === 'wacik' && this.password.value === '123') {
+    //     this.dialogRef.close('user');
+    //   }
+    // if (this.username.value === 'wacik' && this.password.value === 'sama') {
+    //   this.dialogRef.close('admin');
+    // }
   }
 }
